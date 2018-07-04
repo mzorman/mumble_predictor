@@ -11,13 +11,16 @@ API_URI = "http://lyrics.wikia.com/api.php?action=lyrics&fmt=realjson"
 
 # Initialize
 generate_database = False
+base_db = False
 add_path = False
 
 # Read settings
 with open('Settings.txt') as f:
     for line in f:
-        if 'True' in line:
+        if 'generate_database = True' in line:
             generate_database = True
+        if 'generate_base = True' in line:
+            base_db = True
         if 'db_name' in line:
             db_name = str(line.split('=')[1]).strip()
         if 'add_path' in line:
@@ -46,20 +49,21 @@ if generate_database:
     lyrics = ''
 
     # Iterate through artits to create db
-    for rapper in artists:
-        params = {
-            'artist': rapper
-        }
-        artist = requests.get(API_URI, params=params).json()
-        for album in artist['albums']:
-            for song in album['songs']:
-                params = {
-                    'artist': rapper,
-                    'song': song
-                }
-                print("Parsing \"{}\" from Wikia.".format(song))
-                response = requests.get(API_URI, params=params).json()["lyrics"]
-                lyrics += response.replace('[...]', '') + ' '
+    if base_db:
+        for rapper in artists:
+            params = {
+                'artist': rapper
+            }
+            artist = requests.get(API_URI, params=params).json()
+            for album in artist['albums']:
+                for song in album['songs']:
+                    params = {
+                        'artist': rapper,
+                        'song': song
+                    }
+                    print("Parsing \"{}\" from Wikia.".format(song))
+                    response = requests.get(API_URI, params=params).json()["lyrics"]
+                    lyrics += response.replace('[...]', '') + ' '
 
     # Add music not on lyrics.wikia from text file
     if add_path:
@@ -81,7 +85,7 @@ if generate_database:
 
 
 # Predicting lyrics
-f = open(folder + db_name, 'w')
+f = open(folder + db_name + '.txt', 'w')
 
 for i in range(0, int(number_of_phrases)):
 	f.write(mc.generateString() + '\n')

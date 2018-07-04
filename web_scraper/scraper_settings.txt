@@ -1,0 +1,2 @@
+db_path = /Users/marlozorman/Desktop/Work/markov/db/
+chorus = True
