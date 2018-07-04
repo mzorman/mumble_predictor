@@ -1,0 +1,5 @@
+generate_database = True
+db_name = mumble_mix
+add_path = db/addition.txt
+number_of_phrases = 10
+artists = Playboi Carti
