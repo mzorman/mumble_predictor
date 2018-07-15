@@ -1,6 +1,3 @@
-generate_database = False
-generate_base = False
-db_name = carti
-add_path = db/dielit.txt
-number_of_phrases = 15
-artists = Playboi Carti
+db = False
+db name = curated_mix
+number of phrases = 5
