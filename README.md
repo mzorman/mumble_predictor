@@ -2,17 +2,17 @@
 Code adapted from: https://github.com/paladini/py-simple-lyric-generator
 
 Pymarkovchain: https://pypi.org/project/PyMarkovChain/
+^ Check dependencies ^
 
 This repository contains a Markov Chain lyric predictor tailored towards mumble rap
 Training data is scraped from the web according to user input
 
-## ----- predictor.py -----
+## ----- lyric_predictor.py -----
 Uses Settings.txt to generate database if needed and predict lyrics
+Can write line with seed or without - check code to see which is being used
 
 ## ----- Settings.txt -----
-generate_database = (True, unless you want to reuse old db)
-db_name = (name of old db if previous if False)
-add_path = db/ + (name of text file with additional data)
-number_of_phrases = (lines to predict)
-artists = (Enter artists to include in db - seperate with commas)
-
+db = Set true if you want to scrape lyrics 
+db name = If db set False, enter name of db to use in db/ folder
+	  If db set True, enter name for new db
+number of phrases = # of phrases to predict
