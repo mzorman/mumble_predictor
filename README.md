@@ -14,8 +14,6 @@ Can write line with seed or without - check code to see which is being used.
 ## ----- Settings.txt -----
 db = Set true if you want to scrape lyrics 
 
-db name = If db set False, enter name of db to use in db/ folder
-
-	  If db set True, enter name for new db
+db name = If db set False, enter name of db to use in db/ folder. If db set True, enter name for new db
 	  
 number of phrases = # of phrases to predict
